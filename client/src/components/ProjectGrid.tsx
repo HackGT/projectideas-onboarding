@@ -1,68 +1,60 @@
 import React, { useState } from 'react';
-
+import { ProjectIdea } from '../types/ProjectIdea';
 // components
 import { Grid, GridItem, Center } from '@chakra-ui/react';
-import { ProjectCard, ProjectCardProps } from './ProjectCard';
+import { ProjectCard } from './ProjectCard';
 
-export type ProjectGridState = {
-  ideas: ProjectCardProps[];
+type ProjectCard = ProjectIdea & {
+  id: string;
 };
 
-const data = [
+const data: ProjectCard[] = [
   {
     title: 'Project Idea 1',
     description: 'Create a project idea dashboard to store all my best ideas',
-    flag: true,
-    id: 1,
+    id: '1',
   },
   {
     title: 'Project Idea 2',
     description: 'sample desc.',
-    flag: true,
-    id: 2,
+    id: '2',
   },
   {
     title: 'Project Idea 3',
     description: 'sample desc.',
-    flag: true,
-    id: 3,
+    id: '3',
   },
   {
     title: 'Project Idea 4',
     description: 'sample desc.',
-    flag: true,
-    id: 4,
+    id: '4',
   },
   {
     title: 'Project Idea 5',
     description: 'sample desc.',
-    flag: true,
-    id: 5,
+    id: '5',
   },
   {
     title: 'Project Idea 6',
     description: 'sample desc.',
-    flag: true,
-    id: 6,
+    id: '6',
   },
   {
     title: 'Project Idea 7',
     description: 'sample desc.',
-    flag: true,
-    id: 7,
+    id: '7',
   },
   {
     title: 'Project Idea 8',
     description: 'sample desc.',
-    flag: true,
-    id: 8,
+    id: '8',
   },
 ];
 
 const ProjectGrid: React.FC = () => {
-  const [ideas, setIdeas] = useState<ProjectCardProps[]>(data);
+  const [ideas, setIdeas] = useState<ProjectCard[]>(data);
 
-  const removeIdea = (key: number) => {
+  const removeIdea = (key: string) => {
     // const ideasCopy = ideas;
     // ideasCopy.splice(key, 1);
     // console.log(ideasCopy);
@@ -78,13 +70,7 @@ const ProjectGrid: React.FC = () => {
     return (
       <GridItem key={index}>
         <Center>
-          <ProjectCard
-            id={idea.id}
-            title={idea.title}
-            description={idea.description}
-            flag={idea.flag}
-            removeCard={removeIdea}
-          />
+          <ProjectCard id={idea.id} title={idea.title} description={idea.description} removeCard={removeIdea} />
         </Center>
       </GridItem>
     );

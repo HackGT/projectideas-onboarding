@@ -1,17 +1,12 @@
 import React from 'react';
+import { ProjectIdea } from '../types/ProjectIdea';
 
 // components
 import { Box, Button, Text, Center, Flex } from '@chakra-ui/react';
 
-type ProjectCardProps = {
-  title: string;
-  description: string;
-  flag: boolean;
-  id: number;
-};
-
-type Props = ProjectCardProps & {
-  removeCard: (key: number) => void;
+type Props = ProjectIdea & {
+  id: string;
+  removeCard: (key: string) => void;
 };
 
 const ProjectCard: React.FC<Props> = (props: Props) => {
@@ -55,4 +50,3 @@ const ProjectCard: React.FC<Props> = (props: Props) => {
 };
 
 export { ProjectCard };
-export type { ProjectCardProps };
