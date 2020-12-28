@@ -2,7 +2,8 @@ import express from "express"
 import { IUser, User} from "../schema";
 export let ideaRoutes = express.Router();
 
-ideaRoutes.route("/ideas/add").post(async (req, res) => {
+ideaRoutes.route("/add").post(async (req, res) => {
+    // console.log(req);
     const reqUser = req.user as IUser;
     const user = await User.findById(reqUser._id);
     if (!user) {
@@ -25,11 +26,10 @@ ideaRoutes.route("/ideas/add").post(async (req, res) => {
         return res.status(400).send({ error: true, message: "Random id generator found duplicates!!" });
     }
     return res.send({ id: s });
-
 });
 
 
-ideaRoutes.route("/ideas/remove/:id").post(async (req, res) => {
+ideaRoutes.route("/remove/:id").post(async (req, res) => {
     const reqUser = req.user as IUser;
     const user = await User.findById(reqUser._id);
     let ideaId = req.params.id
@@ -51,7 +51,7 @@ ideaRoutes.route("/ideas/remove/:id").post(async (req, res) => {
 });
 
 
-ideaRoutes.route("/ideas/edit/:id").post(async (req, res) => {
+ideaRoutes.route("/edit/:id").post(async (req, res) => {
     const reqUser = req.user as IUser;
     const user = await User.findById(reqUser._id);
     let ideaId = req.params.id
@@ -79,6 +79,7 @@ ideaRoutes.route("/ideas/edit/:id").post(async (req, res) => {
 
 
 ideaRoutes.route("/ideas").get(async (req, res) => {
+    console.log(req)
     const reqUser = req.user as IUser;
     const user = await User.findById(reqUser._id);
     if (!user) {

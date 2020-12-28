@@ -39,9 +39,9 @@ app.use("/ideas", isAuthenticated, ideaRoutes);
 // app.use("/event", isAuthenticated, eventRoutes);
 // app.use("/user", userRoutes);
 
-app.get("*", (req, res) => {
-    res.status(404).send("Sorry :( this is an invalid url");
-})
+// app.get("*", (req, res) => {
+//     res.status(404).send("Sorry :( this is an invalid url");
+// })
 
 app.listen(port, () => {
     console.log(`Project Ideas Onboarding Project system v${VERSION_NUMBER} started on port ${process.env.PORT}`);
