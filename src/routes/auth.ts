@@ -8,6 +8,7 @@ export let authRoutes = express.Router();
 
 authRoutes.route("/login").get((req, res, next) => {
     const callbackURL = createLink(req, "auth/login/callback");
+    console.log(callbackURL)
     passport.authenticate('oauth2', { callbackURL } as AuthenticateOptions)(req, res, next);
 });
 

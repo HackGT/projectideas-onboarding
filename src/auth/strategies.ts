@@ -73,50 +73,48 @@ export class GroundTruthStrategy extends OAuthStrategy {
     }
 
     protected static async passportCallback(req: Request, accessToken: string, refreshToken: string, profile: IProfile, done: PassportDone) {
-        const query = `
-                query($search: String!) {
-                    search_user(search: $search, offset: 0, n: 1) {
-                        users {
-                            confirmed
-                        }
-                    }
-                }
-            `;
+        // const query = `
+        //         query($search: String!) {
+        //             search_user(search: $search, offset: 0, n: 1) {
+        //                 users {
+        //                     confirmed
+        //                 }
+        //             }
+        //         }
+        //     `;
 
-        const variables = {
-            search: profile.email
-        };
+        // const variables = {
+        //     search: profile.email
+        // };
 
-        const res = await fetch(process.env.GRAPHQL_URL || "https://registration.hack.gt/graphql", {
-            method: 'POST',
-            headers: {
-                "Authorization": "Bearer " + (process.env.GRAPHQL_AUTH || "secret"),
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                query,
-                variables
-            })
-        });
+        // const res = await fetch(process.env.GRAPHQL_URL || "https://registration.hack.gt/graphql", {
+        //     method: 'POST',
+        //     headers: {
+        //         "Authorization": "Bearer " + (process.env.GRAPHQL_AUTH || "secret"),
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         query,
+        //         variables
+        //     })
+        // });
 
-        const data = await res.json();
+        // const data = await res.json();
 
-        if (!data || data.data.search_user.users.length === 0 || !data.data.search_user.users[0].confirmed) {
-            done(new Error("User is not confirmed in registration"), undefined);
-        }
+        // // if (!data || data.data.search_user.users.length === 0 || !data.data.search_user.users[0].confirmed) {
+        // //     done(new Error("User is not confirmed in registration"), undefined);
+        // // }
+        // if (!data) {
+        //     done(new Error("Error in making user"), undefined);
+        // }
 
         let user = await User.findOne({ uuid: profile.uuid });
 
         if (!user) {
             user = createNew<IUser>(User, {
                 ...profile,
-                points: 20,
                 admin: false,
-                events: [{
-                    id: "5f5b96c1593dd900222fd5e8",
-                    name: "Opening Ceremonies",
-                    points: 20
-                }]
+                ideas: []
             });
         } else {
             user.token = accessToken;

@@ -22,11 +22,10 @@ export interface IUser extends RootDocument {
     name: string;
     token: string;
     admin: boolean;
-    points: number;
-    events: {
+    ideas: {
         id: string,
-        name: string,
-        points: number
+        title: string,
+        description: string
     }[];
 }
 export const User = mongoose.model<IUser & mongoose.Document>("User", new mongoose.Schema({
@@ -50,17 +49,12 @@ export const User = mongoose.model<IUser & mongoose.Document>("User", new mongoo
         type: Boolean,
         default: false
     },
-    points: {
-        type: Number,
-        required: true,
-        default: 0
-    },
-    events: {
+    ideas: {
         type: [
             {
                 id: String,
-                name: String,
-                points: Number
+                title: String,
+                description: String
             }
         ],
         default: []
@@ -70,3 +64,5 @@ export const User = mongoose.model<IUser & mongoose.Document>("User", new mongoo
         usePushEach: true
     }
 ));
+
+
