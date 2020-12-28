@@ -35,7 +35,7 @@ app.get("/", isAuthenticated, (req, res) => { // have you login once you come to
 });
 // app.use("/",);
 app.use("/auth", authRoutes);
-app.use("/idea", isAuthenticated, ideaRoutes);
+app.use("/ideas", isAuthenticated, ideaRoutes);
 // app.use("/event", isAuthenticated, eventRoutes);
 // app.use("/user", userRoutes);
 
