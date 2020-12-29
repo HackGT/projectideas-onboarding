@@ -24,26 +24,25 @@ process.on("unhandledRejection", err => {
 
 import { isAuthenticated } from "./auth/auth";
 import { authRoutes } from "./routes/auth";
-// import { eventRoutes } from "./routes/event";
-// import { userRoutes } from "./routes/user";
+import { ideaRoutes } from "./routes/idea";
+
 
 app.get("/status", (req, res) => {
     res.status(200).send("Success");
 });
-// app.get("/", (req, res) => {
-//     res.redirect("https://live.hack.gt");
-// });
-app.use("/", (req, res) => {
-    res.redirect("https://live.hack.gt");
+app.get("/", isAuthenticated, (req, res) => { // have you login once you come to front end
+    res.redirect("https://live.hack.gt"); // have it redirect to front end file with response.sendFile instead
 });
+// app.use("/",);
 app.use("/auth", authRoutes);
+app.use("/ideas", isAuthenticated, ideaRoutes);
 // app.use("/event", isAuthenticated, eventRoutes);
 // app.use("/user", userRoutes);
 
-app.get("*", (req, res) => {
-    res.status(404).send("Sorry :( this is an invalid url");
-})
+// app.get("*", (req, res) => {
+//     res.status(404).send("Sorry :( this is an invalid url");
+// })
 
 app.listen(port, () => {
-    console.log(`Virtual Check-in system v${VERSION_NUMBER} started on port ${process.env.PORT}`);
+    console.log(`Project Ideas Onboarding Project system v${VERSION_NUMBER} started on port ${process.env.PORT}`);
 });

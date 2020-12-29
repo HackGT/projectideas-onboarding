@@ -9,3 +9,5 @@ npx create-react-app my-app --template typescript
 cd client
 yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion
 ```
+
+Run yarn dev to run a development server!
