@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { addIdea } from '../services/ProjectIdeaService';
-
+import { ProjectIdea } from '../types/ProjectIdea';
 // components
 import {
   Modal,
@@ -21,6 +21,11 @@ import {
 type ModalProps = {
   open: boolean;
   closeModal: () => void;
+  addIdea: (idea: ProjectIdea) => void;
+};
+
+type Response = {
+  id: string;
 };
 
 function delay(ms: number) {
@@ -39,10 +44,17 @@ const AddIdeaModal: React.FC<ModalProps> = (props: ModalProps) => {
     try {
       await delay(1000);
 
-      await addIdea({
+      const response: Response = await addIdea({
         title,
         description,
       });
+
+      props.addIdea({
+        title: title,
+        description: description,
+        id: response.id,
+      });
+
       props.closeModal();
     } catch (e: any) {
       toast({

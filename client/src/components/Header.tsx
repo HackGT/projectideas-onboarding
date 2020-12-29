@@ -3,8 +3,13 @@ import React, { useState } from 'react';
 // components
 import { Flex, Heading, Box, Button } from '@chakra-ui/react';
 import { AddIdeaModal } from './AddIdeaModal';
+import { ProjectCard } from '../types/ProjectIdea';
 
-const Header: React.FC = () => {
+type Props = {
+  addIdea: (idea: ProjectCard) => void;
+};
+
+const Header: React.FC<Props> = (props) => {
   const [isAddIdeaOpen, setAddIdea] = useState<boolean>(false);
 
   const onOpenAddIdea = () => {
@@ -31,7 +36,7 @@ const Header: React.FC = () => {
         <Button color="tomato" onClick={onOpenAddIdea}>
           Add Idea
         </Button>
-        <AddIdeaModal open={isAddIdeaOpen} closeModal={() => setAddIdea(false)} />
+        <AddIdeaModal open={isAddIdeaOpen} closeModal={() => setAddIdea(false)} addIdea={props.addIdea} />
       </Box>
     </Flex>
   );

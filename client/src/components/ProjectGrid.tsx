@@ -8,69 +8,17 @@ type ProjectCard = ProjectIdea & {
   id: string;
 };
 
-const data: ProjectCard[] = [
-  {
-    title: 'Project Idea 1',
-    description: 'Create a project idea dashboard to store all my best ideas',
-    id: '1',
-  },
-  {
-    title: 'Project Idea 2',
-    description: 'sample desc.',
-    id: '2',
-  },
-  {
-    title: 'Project Idea 3',
-    description: 'sample desc.',
-    id: '3',
-  },
-  {
-    title: 'Project Idea 4',
-    description: 'sample desc.',
-    id: '4',
-  },
-  {
-    title: 'Project Idea 5',
-    description: 'sample desc.',
-    id: '5',
-  },
-  {
-    title: 'Project Idea 6',
-    description: 'sample desc.',
-    id: '6',
-  },
-  {
-    title: 'Project Idea 7',
-    description: 'sample desc.',
-    id: '7',
-  },
-  {
-    title: 'Project Idea 8',
-    description: 'sample desc.',
-    id: '8',
-  },
-];
+type Props = {
+  ideas: ProjectCard[];
+  removeIdea: (id: string) => void;
+};
 
-const ProjectGrid: React.FC = () => {
-  const [ideas, setIdeas] = useState<ProjectCard[]>(data);
-
-  const removeIdea = (key: string) => {
-    // const ideasCopy = ideas;
-    // ideasCopy.splice(key, 1);
-    // console.log(ideasCopy);
-    const newList = ideas.filter((item) => item.id !== key);
-    setIdeas(newList);
-  };
-
-  // useEffect(() => {
-  //   setIdeas(data);
-  // }, []);
-
-  const projectCards = ideas.map((idea, index) => {
+const ProjectGrid: React.FC<Props> = (props: Props) => {
+  const projectCards = props.ideas.map((idea, index) => {
     return (
       <GridItem key={index}>
         <Center>
-          <ProjectCard id={idea.id} title={idea.title} description={idea.description} removeCard={removeIdea} />
+          <ProjectCard id={idea.id} title={idea.title} description={idea.description} removeCard={props.removeIdea} />
         </Center>
       </GridItem>
     );
