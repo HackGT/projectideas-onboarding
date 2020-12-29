@@ -66,3 +66,30 @@ export const User = mongoose.model<IUser & mongoose.Document>("User", new mongoo
 ));
 
 
+export interface IIdea extends RootDocument {
+    user_id: string;
+    title: string;
+    description: string;
+}
+
+export const Idea = mongoose.model<IIdea & mongoose.Document>("Idea", new mongoose.Schema({
+    user_id: {
+        type: String,
+        required: true,
+    },
+    title: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true
+    }
+},
+    {
+        usePushEach: true
+    }
+
+));
+
+
