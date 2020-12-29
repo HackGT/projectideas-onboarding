@@ -5,6 +5,7 @@ export let ideaRoutes = express.Router();
 ideaRoutes.route("/add").post(async (req, res) => {
     // console.log(req);
     const reqUser = req.user as IUser;
+    //console.log(reqUser);
     const user = await User.findById(reqUser._id);
     if (!user) {
         return res.status(400).send("Invalid request");
@@ -14,17 +15,18 @@ ideaRoutes.route("/add").post(async (req, res) => {
         return res.status(400).send({ error: true, message: "Invalid request" });
     }
     let s = Math.random().toString(36).substr(2, 9);
-    const notIn = user.ideas.filter(userIdea => userIdea.id === data.idea.id).length === 0;
+    const notIn = user.ideas.filter(userIdea => userIdea.id === s).length === 0;
     if (notIn) {
         user.ideas.push({
-            id: data.idea.id,
-            title: data.idea.name,
-            description: data.idea.description
+            id: s,
+            title: data.title,
+            description: data.description
         });
         await user.save(err => console.log(err));
     } else {
         return res.status(400).send({ error: true, message: "Random id generator found duplicates!!" });
     }
+    // console.log(s)
     return res.send({ id: s });
 });
 
@@ -41,7 +43,7 @@ ideaRoutes.route("/remove/:id").post(async (req, res) => {
         return res.status(400).send({ error: true, message: "Invalid request" });
     }
     const notIn = user.ideas.filter(userIdea => userIdea.id === ideaId).length === 0;
-    if (!notIn) {
+    if (notIn) {
         return res.status(400).send({ error: true, message: "Id provided doesn't match any Idea" });
     }
     user.ideas = user.ideas.filter(userIdea => userIdea.id != ideaId);
@@ -63,7 +65,7 @@ ideaRoutes.route("/edit/:id").post(async (req, res) => {
         return res.status(400).send({ error: true, message: "Invalid request" });
     }
     const notIn = user.ideas.filter(userIdea => userIdea.id === ideaId).length === 0;
-    if (!notIn) {
+    if (notIn) {
         return res.status(400).send({ error: true, message: "Id provided doesn't match any Idea" });
     }
     user.ideas.forEach( (idea) => {
@@ -79,7 +81,6 @@ ideaRoutes.route("/edit/:id").post(async (req, res) => {
 
 
 ideaRoutes.route("/ideas").get(async (req, res) => {
-    console.log(req)
     const reqUser = req.user as IUser;
     const user = await User.findById(reqUser._id);
     if (!user) {
