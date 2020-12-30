@@ -91,41 +91,7 @@ export class GroundTruthStrategy extends OAuthStrategy {
     profile: IProfile,
     done: PassportDone
   ) {
-    // const query = `
-    //         query($search: String!) {
-    //             search_user(search: $search, offset: 0, n: 1) {
-    //                 users {
-    //                     confirmed
-    //                 }
-    //             }
-    //         }
-    //     `;
-
-    // const variables = {
-    //     search: profile.email
-    // };
-
-    // const res = await fetch(process.env.GRAPHQL_URL || "https://registration.hack.gt/graphql", {
-    //     method: 'POST',
-    //     headers: {
-    //         "Authorization": "Bearer " + (process.env.GRAPHQL_AUTH || "secret"),
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //         query,
-    //         variables
-    //     })
-    // });
-
-    // const data = await res.json();
-
-    // // if (!data || data.data.search_user.users.length === 0 || !data.data.search_user.users[0].confirmed) {
-    // //     done(new Error("User is not confirmed in registration"), undefined);
-    // // }
-    // if (!data) {
-    //     done(new Error("Error in making user"), undefined);
-    // }
-
+      
     let user = await User.findOne({ uuid: profile.uuid });
 
     if (!user) {
