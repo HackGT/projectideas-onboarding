@@ -1,8 +1,8 @@
 import React from 'react';
 import { ProjectIdea } from '../types/ProjectIdea';
-
+import { removeIdea } from '../services/ProjectIdeaService';
 // components
-import { Box, Button, Text, Center, Flex } from '@chakra-ui/react';
+import { Box, Button, Text, Center, Flex, useToast } from '@chakra-ui/react';
 
 type Props = ProjectIdea & {
   id: string;
@@ -10,12 +10,35 @@ type Props = ProjectIdea & {
 };
 
 const ProjectCard: React.FC<Props> = (props: Props) => {
+  const toast = useToast();
+
+  const onRemoveClick = async (): Promise<void> => {
+    try {
+      await removeIdea(props.id);
+      props.removeCard(props.id);
+      toast({
+        title: 'Removed!',
+        description: 'Idea was removed!',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+      });
+    } catch (e) {
+      toast({
+        title: 'Remove Error!',
+        description: String(e),
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  };
   return (
     <Box
       borderWidth="1px"
       borderRadius="lg"
-      height="175px"
-      width="145px"
+      height="195px"
+      width="165px"
       fontWeight="bold"
       alignItems="center"
       bg="tomato"
@@ -31,16 +54,7 @@ const ProjectCard: React.FC<Props> = (props: Props) => {
           {props.description}
         </Text>
         <Center h="10%" marginTop="auto">
-          <Button
-            fontSize="sm"
-            color="tomato"
-            h="100%"
-            borderRadius="md"
-            onClick={() => {
-              console.log('hi');
-              props.removeCard(props.id);
-            }}
-          >
+          <Button fontSize="sm" color="tomato" h="100%" borderRadius="md" onClick={onRemoveClick}>
             Remove
           </Button>
         </Center>

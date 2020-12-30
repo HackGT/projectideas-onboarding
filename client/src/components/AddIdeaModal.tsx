@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { addIdea } from '../services/ProjectIdeaService';
-import { ProjectIdea } from '../types/ProjectIdea';
+import { ProjectCard } from '../types/ProjectIdea';
 // components
 import {
   Modal,
@@ -11,7 +11,6 @@ import {
   ModalOverlay,
   ModalCloseButton,
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Button,
   Input,
@@ -21,11 +20,7 @@ import {
 type ModalProps = {
   open: boolean;
   closeModal: () => void;
-  addIdea: (idea: ProjectIdea) => void;
-};
-
-type Response = {
-  id: string;
+  addIdea: (idea: ProjectCard) => void;
 };
 
 function delay(ms: number) {
@@ -42,9 +37,9 @@ const AddIdeaModal: React.FC<ModalProps> = (props: ModalProps) => {
     event.preventDefault();
     setLoading(true);
     try {
-      await delay(1000);
+      await delay(500);
 
-      const response: Response = await addIdea({
+      const response = await addIdea({
         title,
         description,
       });
@@ -52,16 +47,24 @@ const AddIdeaModal: React.FC<ModalProps> = (props: ModalProps) => {
       props.addIdea({
         title: title,
         description: description,
-        id: response.id,
+        id: String(response.id),
       });
 
       props.closeModal();
-    } catch (e: any) {
+      toast({
+        title: 'Added!',
+        description: 'Idea was added!',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      });
+    } catch (e) {
+      console.log(e);
       toast({
         title: 'Save Error!',
-        description: 'There was a problem saving your idea. Please try again! :(',
+        description: String(e),
         status: 'error',
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
       });
     }
@@ -87,7 +90,6 @@ const AddIdeaModal: React.FC<ModalProps> = (props: ModalProps) => {
             <FormControl isRequired>
               <FormLabel color="tomato">Title</FormLabel>
               <Input name="title" placeholder="My Best Idea" onChange={onTitleChange} />
-              <FormErrorMessage>there is a problem here</FormErrorMessage>
             </FormControl>
 
             <FormControl mt={4}>

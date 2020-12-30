@@ -1,20 +1,49 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 import { ProjectIdea } from '../types/ProjectIdea';
 
-const addIdea = async (idea: ProjectIdea): Promise<void> => {
+const getIdeas = async (): Promise<any> => {
   try {
-    await axios.post('/ideas/add', idea);
+    const ideas = await axios.get('/ideas');
+    console.log(ideas.data);
+    return ideas.data;
   } catch (e: any) {
-    throw new Error('Problem submitting form. Try again later.');
+    if (e.response) {
+      throw new Error(e.response.data.message);
+    } else {
+      throw new Error('Please refresh page & try again.');
+    }
   }
 };
 
-const removeIdea = async (id: string): Promise<void> => {
-  await axios.post('/ideas/remove/' + id);
+const addIdea = async (idea: ProjectIdea): Promise<any> => {
+  try {
+    const resp = await axios.post('/ideas/add', idea);
+    return resp.data;
+  } catch (e: any) {
+    if (e.response) {
+      throw new Error(e.response.data.message);
+    } else {
+      throw new Error('Please refresh page & try again.');
+    }
+  }
 };
 
-const editIdea = async (id: string, idea: ProjectIdea): Promise<void> => {
+const removeIdea = async (id: string): Promise<any> => {
+  try {
+    const resp = await axios.post('/ideas/remove/' + id);
+    return resp.data;
+  } catch (e: any) {
+    if (e.response) {
+      throw new Error(e.response.data.message);
+    } else {
+      throw new Error('Please refresh page & try again.');
+    }
+  }
+};
+
+const editIdea = async (id: string, idea: ProjectIdea): Promise<any> => {
   await axios.post('/ideas/edit/' + id, idea);
 };
 
-export { addIdea, removeIdea, editIdea };
+export { getIdeas, addIdea, removeIdea, editIdea };

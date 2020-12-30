@@ -1,0 +1,16 @@
+git:
+  branch: master
+
+target_port: 3000
+
+wants:
+  mongo: true
+
+secrets:
+  - GROUND_TRUTH_SECRET
+  - GROUND_TRUTH_ID
+  - SECRET
+
+env:
+  GROUND_TRUTH_URL: https://login.hack.gt
+  PORT: 3000

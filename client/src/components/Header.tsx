@@ -9,7 +9,7 @@ type Props = {
   addIdea: (idea: ProjectCard) => void;
 };
 
-const Header: React.FC<Props> = (props) => {
+const Header: React.FC<Props> = (props: Props) => {
   const [isAddIdeaOpen, setAddIdea] = useState<boolean>(false);
 
   const onOpenAddIdea = () => {
@@ -28,7 +28,7 @@ const Header: React.FC<Props> = (props) => {
       height="100%"
     >
       <Flex align="center" mr={5} height="100%">
-        <Heading as="h1" size="5xl" letterSpacing={'-.05rem'}>
+        <Heading as="h1" letterSpacing={'-.05rem'}>
           Project Ideas
         </Heading>
       </Flex>
