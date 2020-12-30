@@ -14,3 +14,4 @@ secrets:
 env:
   GROUND_TRUTH_URL: https://login.hack.gt
   PORT: 3000
+  
