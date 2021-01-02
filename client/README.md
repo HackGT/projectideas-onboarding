@@ -104,3 +104,13 @@ yarn install
 ```
 
 After a couple seconds, this should install all of the nececssary dependencies in a new generated folder called `node_modules` (should be in your client folder).
+
+### Running
+
+The beauty of `package.json` is that the developer can also specify how to run the app. If you look at the "scripts" section, you can see 3 available commands: `start`, `build`, `test`, `eject`. For now, we only care about the `start` command. To run our app, go to your Terminal, make sure you are in the client folder & run:
+
+```shell
+yarn start
+```
+
+This will automatically create a development build of our app with hot reloading, and host it on http://localhost:3000. If it hasn't opened already, go to your browser & navigate to this address. You should see a white screen that says "ProjectContainer" in the top left.
