@@ -2,6 +2,11 @@
 
 Welcome to the HackGT 2021 onboarding project. This will serve as an introduction to TypeScript/JavaScript, Node.js, MongoDB, and React. You'll be making a Project Ideas dashboard!
 
+This README has the following sections:
+- [Installation](#Installation)
+- [Learning Links](#Learning-Links)
+- [Setup](#Setup)
+
 Please follow the installation instructions in order, since later tools may depend on installing previous tools first.
 
 ## Installation
@@ -32,9 +37,36 @@ If you're on macOS or Linux, you should also install Homebrew. It's essentially 
 
 [Here](https://docs.mongodb.com/manual/administration/install-community/) are the installation instructions for MongoDB Community Edition. Check that it's installed by running `mongo --version`.
 
+### MongoDB Compass
+
+MongoDB Compass is a GUI for your database that allows you to easily interact with it and view data. Download it [here](https://www.mongodb.com/try/download/compass)
+
 ### VSCode
 
 The easiest code editor to get started with is VSCode. Please don't use Sublime :). You can download it [here](https://code.visualstudio.com/download).
+
+## Learning Links
+
+On most coding projects, you'll likely be using a wide number of tools, frameworks, and languages, and you'll constantly be learning new ones as projects rise and fall in popularity. As such, here are some cool resources to help you learn the tools we use at HackGT.
+
+### JavaScript and TypeScript
+- Modern JavaScript Tutorial [https://javascript.info/](https://javascript.info/)
+- JavaScript tutorial [https://www.tutorialrepublic.com/javascript-tutorial/](https://www.tutorialrepublic.com/javascript-tutorial/)
+- TypeScript for new programmers [https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
+
+### React
+- Amazing slides made my Tim Aveni, HackGT alum [https://tja.io/hackgt5/slides/](https://tja.io/hackgt5/slides/)
+- A great getting started guide with React [https://www.taniarascia.com/getting-started-with-react/](https://www.taniarascia.com/getting-started-with-react/)
+- Honestly, the official React docs are great themselves [https://reactjs.org/docs/hello-world.html](https://reactjs.org/docs/hello-world.html)
+
+### Node.js and Express.js
+- Node.js/Express overview [https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
+- In depth Node.js [https://nodejs.dev/learn](https://nodejs.dev/learn)
+- Official Express getting started [https://expressjs.com/en/starter/hello-world.html](https://expressjs.com/en/starter/hello-world.html)
+
+### MongoDB and Mongoose
+- MongoDB tutorial [https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/](https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/)
+- Mongoose introduction [https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/](https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/)
 
 ## Setup
 
