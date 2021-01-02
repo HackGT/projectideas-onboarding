@@ -60,7 +60,9 @@ The fundamental concept to understand about state is that changing it triggers r
 The most powerful part of state is the ability to pass them in as props into child components. Here's a snippet of this in React syntax. We'll call this component ProjectContainer:
 
 ```html
-ProjectContainer.tsx [titleState, setTitle] = useState(""); . . . <ProjectCard title="{titleState}" />
+ProjectContainer.tsx [titleState, setTitle] = useState(""); 
+...
+<ProjectCard title="{titleState}" />
 ```
 
 Don't worry about the syntax here. The main concept to understand is that `ProjectCard` takes in a prop called `title`. Our `ProjectContainer` contains a state variable called "titleState". We pass this state into ProjectCard's `title` prop. Now, whenever `titleState` changes, the `ProjectContainer` will re-render and `ProjectCard` will get the new title.
