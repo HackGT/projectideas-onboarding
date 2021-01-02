@@ -15,7 +15,7 @@ const Header: React.FC<Props> = (props: Props) => {
   const onOpenAddIdea = () => {
     setAddIdea(true);
   };
-
+  console.log('rendering');
   return (
     <Flex
       as="nav"

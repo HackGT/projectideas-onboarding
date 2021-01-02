@@ -1,46 +1,106 @@
-# Getting Started with Create React App
+# Project Ideas Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Before starting, check out a live-demo of what you'll be building at https://ideas.dev.hack.gt
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+This tutorial will go over building the front-end of our project ideas application. By this point, you should have a a fully working web server running on NodeJS/Express. Our goal now is to build the actual user interface that our user will interact with.
 
-### `yarn start`
+For simple websites (i.e. personal website, wiki page, etc.), using vanilla HTML/CSS/JS usually suffices. However, when our webpage has a lot of components and user interactivity, ReactJS can be a good tool to use. React relies on 3 key ideas:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Reuseable Components**: _React provides an intuitive way to create components & re-use them wherever we want to in an application_
+- **State-Based Rendering**: _React maintains an internal representation of the webpage & efficiently updates this when the "state" of a component changes. Whenever something happens in the application (i.e. user clicks a button), React will figure out which components need to be re-rendered and only update those components_
+- **Information passing**: _Data in your components are passed in through a concept called "props". Components can access the props that are passed into it & use that information to decide what to render._
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Components
 
-### `yarn test`
+Components are the core of React. Every application is essentially made up of a component hierarchy. The first step when making a react application is to think about how you want to design your components. For example, in our Project Ideas app: ![Components](tutorial/components.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A possible component hierarcy would be:
 
-### `yarn build`
+- App Container
+  - ProjectContainer Component
+    - Header Component
+    - ProjectGrid Component
+      - ProjectCard Component
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We see 2 keywords here: _Container_ and _Component_- this brings us to our next concept: Presentational Components vs. Container Components.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A Presentational Component is a component that is responsible for taking in information and displaying it appropriately to the user. In our app, the ProjectCard is an example of a presentational component because it is only responsible for displaying the card to the User. In this case, our ProjectCard commponent would take in information (called "props") like the Project title & the Project description, and _display_ it to the user.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A Container component is sometimes called a "Smart Component" or _stateful components_ is primarily a data source for Presentational components. This component is responsible for the actual business-logic: one common use-case for Container components is to fetch data from APIs and store it in the container's state. In our app, the ProjectContainer component is responsible for making the API call to fetch the user's project ideas and store it in its state. The component will then pass in this information as props into the ProjectGrid "Presentational" component, which will render the ProjectCards on the user's screen.
 
-### `yarn eject`
+When the user refreshes the webpage, the following sequence will happen:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- ProjectContainer Fetches Ideas from API
+- ProjectContainer stores the fetched ideas in _state_
+- ProjectContainer will pass this data into the ProjectGrid component via _props_
+- ProjectGrid will read its props and render ProjectCards for each "project idea"
+- Each ProjectCard will receive a project idea from ProjectGrid in its props & render the corresponding title & description
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Props
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+So what exactly are props? Props are nothing but information that is passed into a component. In our previous example, "title" and "description" are props that are passed into the ProjectCard component. Each ProjectCard has read-only access to these props and can render this to the user using HTML. A very simple example of this would be:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```html
+<h1>{this.props.title}</h1>
+<p>{this.props.description}</p>
+```
 
-## Learn More
+We'll see a more detailed example as we implement the ProjectCard component later in this tutorial.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The key idea to understand about props is that they can **only** be passed from a _parent component to a child component_. Later in this tutorial, we'll look at how this could potentially be a problem & how we can resolve it.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### State
+
+We've mentioned "state" quite a bit so far. The state is the information that is subject to change in a component. In our app, an example of "state" would be the list of project ideas since users need to be able to add/remove ideas. For example, when a user adds an idea, we want to add it to our state.
+
+The fundamental concept to understand about state is that changing it triggers re-renders. Whenever a component's state changes, React will automatically re-render the commponent & thus all of the component's child components. In our case, we will maintain the state of ideas in the ProjectContainer Component- whenever this state changes, Ract will re-render the ProjectGrid & Header components since they are children.
+
+The most powerful part of state is the ability to pass them in as props into child components. Here's a snippet of this in React syntax. We'll call this component ProjectContainer:
+
+```html
+ProjectContainer.tsx [titleState, setTitle] = useState(""); . . . <ProjectCard title="{titleState}" />
+```
+
+Don't worry about the syntax here. The main concept to understand is that `ProjectCard` takes in a prop called `title`. Our `ProjectContainer` contains a state variable called "titleState". We pass this state into ProjectCard's `title` prop. Now, whenever `titleState` changes, the `ProjectContainer` will re-render and `ProjectCard` will get the new title.
+
+---
+
+Congrats! You should now have a decent understanding of how React works at the high-level. Now, let's get our hands dirty and start building our app :)
+
+## Installation
+
+### IDE
+
+We highly recommend using VSCode for developmment as it provides extensions automatic linting, debugging, and support for Typescript.
+
+### Clone Repository
+
+_DISCLAIMER: If you've already done this in the backend tutorial, skip to the next section_
+
+The first step is to clone the git repository for this project. We provide some starter code & files just to make sure everyone is on the same page.
+
+Open a terminal (either through VSCode or your own Terminal app). If you are on Windows, I recommend using the VSCode terminal (in the menu, Terminal > New Terminal) so you can run bash commands easily.
+
+```shell
+git clone https://github.com/HackGT/projectideas-onboarding2020.git
+git checkout startercode
+git checkout -b yourfirstname
+```
+
+If the repository clones succesfully, go to VSCode & click on File > New Workspace, and navigate to '2021onboarding.code-workspace'. This will open the repository in your VSCode environment.
+
+Most of our work will be happening in the client folder, so I recommend opening this folder using the Explorer on the left side.
+
+### Dependencies
+
+Our next goal is to download all the dependencies you need. Fortunately this is very straightforward thanks to `package.json`. This file is responsible for storing all of our project's dependencies.
+
+If you went through the backend tutorial, you should already have `yarn` and `npm`. We can use `yarn` to automatically read the `package.json` file and install all of our dependencies. To do this, open the VSCode terminal & make sure you are in the client folder, and run the command:
+
+```shell
+yarn install
+```
+
+After a couple seconds, this should install all of the nececssary dependencies in a new generated folder called `node_modules` (should be in your client folder).

@@ -19,11 +19,7 @@ const ProjectContainer: React.FC = () => {
   }, []);
 
   const removeIdea = (key: string) => {
-    console.log(key);
-    console.log(ideas);
     const newList = ideas.filter((item) => item.id !== key);
-    console.log(newList);
-
     setIdeas(newList);
   };
 
