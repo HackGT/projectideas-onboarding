@@ -11,6 +11,12 @@ Please follow the installation instructions in order, since later tools may depe
 
 ## Installation
 
+### Homebrew
+
+If you're on macOS or Linux, you should first install Homebrew. It's essentially a package manager for your computer (you'll need it to install tools like MongoDB).
+
+[Here](https://brew.sh/) are the installation instructions. Test that its installed by typing in `brew --version`
+
 ### Node.js and npm
 
 You can download Node.js [here](https://nodejs.org/en/). Select the button saying "Recommended For Most Users".
@@ -26,12 +32,6 @@ If these commands return a number like `v12.18.1` you're good to go.
 ### yarn
 
 To install Yarn, go [here](https://classic.yarnpkg.com/en/docs/install). After installing, test that it's installed by running `yarn --version`.
-
-### Homebrew
-
-If you're on macOS or Linux, you should also install Homebrew. It's essentially a package manager for your computer (you'll need it to install tools like MongoDB).
-
-[Here](https://brew.sh/) are the installation instructions. Test that its installed by typing in `brew --version`
 
 ### MongoDB
 
