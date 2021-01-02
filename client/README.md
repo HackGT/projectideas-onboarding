@@ -60,7 +60,8 @@ The fundamental concept to understand about state is that changing it triggers r
 The most powerful part of state is the ability to pass them in as props into child components. Here's a snippet of this in React syntax. We'll call this component ProjectContainer:
 
 ```html
-ProjectContainer.tsx [titleState, setTitle] = useState(""); 
+ProjectContainer.tsx 
+[titleState, setTitle] = useState(""); 
 ...
 <ProjectCard title="{titleState}" />
 ```
