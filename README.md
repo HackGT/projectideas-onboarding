@@ -70,6 +70,14 @@ On most coding projects, you'll likely be using a wide number of tools, framewor
 
 ## Setup
 
+### Git
+
+When developing this onboarding project, please make a new branch with your first name, and use that branch for development. For example, make a branch with `git branch rahul`, and check it out with `git checkout rahul`. As you make commits, you can push to the repo with `git push`.
+
+**Important** Please do not push any commits on the main branch, only push commits on your specific branch!
+
+### Overview
+
 The code for this project is split up between the `client` and `server` folders (ie frontend and backend). Before reading below, please open up Terminal (on Mac) or Command Prompt (on Windows) and navigate to this folder. If you've never used the command line before, look at this quick [cheat sheet](https://enexdi.sciencesconf.org/data/pages/windows_vs_mac_commands_1.pdf).
 
 **Important** In total, you will need 3 different terminal windows/tabs to run all the code. One to run the MongoDB database, one to run the backend, and one to run the frontend.
