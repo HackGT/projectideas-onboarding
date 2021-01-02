@@ -26,9 +26,9 @@ A possible component hierarcy would be:
 
 We see 2 keywords here: _Container_ and _Component_- this brings us to our next concept: Presentational Components vs. Container Components.
 
-A Presentational Component is a component that is responsible for taking in information and displaying it appropriately to the user. In our app, the ProjectCard is an example of a presentational component because it is only responsible for displaying the card to the User. In this case, our ProjectCard commponent would take in information (called "props") like the Project title & the Project description, and _display_ it to the user.
+A Presentational Component is a component that is responsible for taking in information and displaying it appropriately to the user. In our app, the ProjectCard is an example of a presentational component because it is only responsible for displaying the card to the User. In this case, our ProjectCard component would take in information (called "props") like the Project title & the Project description, and _display_ it to the user.
 
-A Container component is sometimes called a "Smart Component" or _stateful components_ is primarily a data source for Presentational components. This component is responsible for the actual business-logic: one common use-case for Container components is to fetch data from APIs and store it in the container's state. In our app, the ProjectContainer component is responsible for making the API call to fetch the user's project ideas and store it in its state. The component will then pass in this information as props into the ProjectGrid "Presentational" component, which will render the ProjectCards on the user's screen.
+A Container component, sometimes called a "Smart Component" or a _Stateful Components_, is primarily a data source for Presentational components. This component is responsible for the actual business-logic: one common use-case for Container components is to fetch data from APIs and store it in the container's state. In our app, the ProjectContainer component is responsible for making the API call to fetch the user's project ideas and store it in its state. The component will then pass in this information as props into the ProjectGrid "Presentational" component, which will render the ProjectCards on the user's screen.
 
 When the user refreshes the webpage, the following sequence will happen:
 
@@ -55,7 +55,7 @@ The key idea to understand about props is that they can **only** be passed from 
 
 We've mentioned "state" quite a bit so far. The state is the information that is subject to change in a component. In our app, an example of "state" would be the list of project ideas since users need to be able to add/remove ideas. For example, when a user adds an idea, we want to add it to our state.
 
-The fundamental concept to understand about state is that changing it triggers re-renders. Whenever a component's state changes, React will automatically re-render the commponent & thus all of the component's child components. In our case, we will maintain the state of ideas in the ProjectContainer Component- whenever this state changes, Ract will re-render the ProjectGrid & Header components since they are children.
+The fundamental concept to understand about state is that changing it triggers re-renders. Whenever a component's state changes, React will automatically re-render the component & thus all of the component's child components. In our case, we will maintain the state of ideas in the ProjectContainer Component- whenever this state changes, Ract will re-render the ProjectGrid & Header components since they are children.
 
 The most powerful part of state is the ability to pass them in as props into child components. Here's a snippet of this in React syntax. We'll call this component ProjectContainer:
 
