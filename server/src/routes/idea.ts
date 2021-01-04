@@ -21,7 +21,7 @@ export let ideaRoutes = express.Router();
 //For this route we want to do add an idea. 
 //We get the idea from our front end and add it to our mongodb database
 //The title and description will be sent as a json within a post request.
-//title can be access with res.body.title and description as res.body.description
+//title can be access with req.body.title and description as req.body.description
 ideaRoutes.route("/add").post(async (req, res, next) => {
   });
 
@@ -34,7 +34,7 @@ ideaRoutes.route("/remove/:id").post(async (req, res, next) => {
 //For this route we want to do edit an idea. 
 //We get the id of the idea to edit from the route header. 
 //The new title and new description will be sent as a json within a post request.
-//title can be access with res.body.title and description as res.body.description
+//title can be access with req.body.title and description as req.body.description
 //Now we edit the existing idea in our database with the new data provides to us.
 ideaRoutes.route("/edit/:id").post(async (req, res, next) => {
 });
