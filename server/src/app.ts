@@ -1,3 +1,6 @@
+// You'll need to add in the route handler here at the comment below.
+// Everything else sets up the middleware, serves the frontend files, and sets up the server
+
 import fs from "fs";
 import path from "path";
 import express from "express";
@@ -28,6 +31,7 @@ import { isAuthenticated } from "./auth/auth";
 import { authRoutes } from "./routes/auth";
 import { ideaRoutes } from "./routes/idea";
 
+// Add your other routes here!
 
 app.use(
   isAuthenticated,

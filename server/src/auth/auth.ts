@@ -1,3 +1,6 @@
+// You shouldn't need to edit any code in this file
+// It handles Express authentication such as cookies, and admin middleware
+
 import mongoose = require("mongoose");
 import express = require("express");
 import passport = require("passport");

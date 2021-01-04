@@ -1,3 +1,6 @@
+// In this file, you need to add an Idea schema at the end of the file
+// Follow the User schema as a template
+
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 

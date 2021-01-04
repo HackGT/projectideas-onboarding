@@ -1,3 +1,6 @@
+// You shouldn't need to edit any code in this file
+// It handles the Ground Truth passport strategy
+
 import { URL } from "url";
 import passport from "passport";
 import { Strategy as OAuthStrategy } from "passport-oauth2";
@@ -91,7 +94,7 @@ export class GroundTruthStrategy extends OAuthStrategy {
     profile: IProfile,
     done: PassportDone
   ) {
-      
+
     let user = await User.findOne({ uuid: profile.uuid });
 
     if (!user) {

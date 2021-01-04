@@ -1,3 +1,6 @@
+// You shouldn't need to change anything in this file, this handles the authentication routes
+// that we use for logging into ground truth
+
 import express = require("express");
 import request = require("request");
 import passport = require("passport");
