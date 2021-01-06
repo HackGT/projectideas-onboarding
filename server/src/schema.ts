@@ -5,7 +5,7 @@ dotenv.config();
 
 const MONGO_URL = String(process.env.MONGO_URL);
 mongoose
-  .connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .catch((err) => {
     throw err;
   });
