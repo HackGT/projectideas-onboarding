@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-
-// components
+//components
 import ProjectContainer from './components/ProjectContainer';
 
 import { Box } from '@chakra-ui/react';
