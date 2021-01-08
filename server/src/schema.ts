@@ -3,6 +3,7 @@
 
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import { title } from "process";
 
 dotenv.config();
 
@@ -65,12 +66,29 @@ export const User = mongoose.model<IUser & mongoose.Document>(
 
 //TODO: Fill out fields in interface for Idea database! Feel free to look at the IUser interface as a reference!
 export interface IIdea extends RootDocument {
-
+  user: IUser;
+  title: string;
+  description: string;
 }
 //TODO: Fill out fields for schema for Idea Database. Feel free to look at the user schema as a reference!
 const IdeaSchema = new mongoose.Schema(
-
+  {
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+  }
 );
+
 
 IdeaSchema.virtual("id").get(function (this: any) {
   return this._id.toHexString();
