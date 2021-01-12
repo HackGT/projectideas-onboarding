@@ -45,6 +45,10 @@ MongoDB Compass is a GUI for your database that allows you to easily interact wi
 
 The easiest code editor to get started with is VSCode. Please don't use Sublime :). You can download it [here](https://code.visualstudio.com/download).
 
+### Postman
+
+Postman is an app that allows you to test your backend code by sending different types of requests. You can download it [here](https://www.postman.com/downloads/).
+
 ## Learning Links
 
 On most coding projects, you'll likely be using a wide number of tools, frameworks, and languages, and you'll constantly be learning new ones as projects rise and fall in popularity. As such, here are some cool resources to help you learn the tools we use at HackGT.
