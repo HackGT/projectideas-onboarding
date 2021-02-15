@@ -31,7 +31,7 @@ import { isAuthenticated } from "./auth/auth";
 import { authRoutes } from "./routes/auth";
 import { ideaRoutes } from "./routes/idea";
 
-// TODO: Add your other routes here!!
+// Add your other routes here!
 app.use("/auth", authRoutes);
 app.use("/ideas", isAuthenticated, ideaRoutes);
 

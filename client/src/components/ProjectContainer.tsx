@@ -15,7 +15,6 @@ const ProjectContainer: React.FC = () => {
       setIdeas(ideas);
     };
     fetchIdeas();
-    console.log('here');
   }, []);
 
   const removeIdea = (key: string) => {

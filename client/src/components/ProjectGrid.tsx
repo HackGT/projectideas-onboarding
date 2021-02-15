@@ -30,8 +30,6 @@ const ProjectGrid: React.FC<Props> = (props: Props) => {
     </Center>
   );
 
-  console.log(projectCards.length + 1);
-
   return projectCards.length > 0 ? (
     <Center padding="10px">
       <Grid templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)', 'repeat(6, 1fr)']} gap={6}>

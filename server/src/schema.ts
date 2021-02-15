@@ -100,4 +100,3 @@ export const Idea = mongoose.model<IIdea & mongoose.Document>(
   "Idea",
   IdeaSchema
 );
-
