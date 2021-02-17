@@ -33,13 +33,14 @@ import { ideaRoutes } from "./routes/idea";
 
 // Add your other routes here!
 app.use("/auth", authRoutes);
-app.use("/ideas", isAuthenticated, ideaRoutes);
+app.use("/ideas", ideaRoutes);
+
 
 app.use(
   isAuthenticated,
   express.static(path.join(__dirname, "../../client/build"))
 );
-app.get("*", isAuthenticated, (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../client/build", "index.html"));
 });
 
