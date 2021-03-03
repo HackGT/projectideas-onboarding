@@ -12,7 +12,7 @@ secrets:
   - SECRET
 
 env:
-  GROUND_TRUTH_URL: https://login.hack.gt
+  GROUND_TRUTH_URL: https://login.dev.hack.gt
   PORT: 3000
   
   
