@@ -1,4 +1,4 @@
-# 2021 HackGT Onboardnig
+# 2021 HackGT Onboarding Edmund
 
 Welcome to the HackGT 2021 onboarding project. This will serve as an introduction to TypeScript/JavaScript, Node.js, MongoDB, and React. You'll be making a Project Ideas dashboard!
 
