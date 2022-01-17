@@ -19,6 +19,7 @@ const VERSION_NUMBER = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "../package.json"), "utf8")
 ).version;
 const port = process.env.PORT || "8000";
+
 export let app = express();
 
 app.use(morgan("dev"));
@@ -31,9 +32,12 @@ import { ideaRoutes } from "./routes/idea";
 
 // TODO: Add your other routes here!!
 app.use("/auth", authRoutes);
+app.use("/ideas", isAuthenticated, ideaRoutes);
 
-app.use(isAuthenticated, express.static(path.join(__dirname, "../../client/build")));
-
+app.use(
+  isAuthenticated,
+  express.static(path.join(__dirname, "../../client/build"))
+);
 app.get("*", isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, "../../client/build", "index.html"));
 });
