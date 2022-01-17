@@ -1,15 +1,14 @@
 {
-    "name": "onboarding2021-server",
-    "version": "1.0.0",
-    "description": "Onboarding starter project",
-    "main": "server/app.ts",
-    "scripts": {
-      "build:server": "cd server && yarn install",
-      "build:client": "cd client && yarn install && yarn build",
-      "build": "yarn build:client && yarn build:server"
-    },
-    "repository": "https://github.com/HackGT/projectideas-onboarding2020.git",
-    "author": "Rahul Rajan <rahul.rajan@hack.gt>",
-    "license": "MIT"
-  }
-  
+  "name": "projectideas",
+  "version": "1.0.0",
+  "description": "Onboarding starter project",
+  "main": "server/app.ts",
+  "scripts": {
+    "build:server": "cd server && yarn install",
+    "build:client": "cd client && yarn install && yarn build",
+    "build": "yarn build:client && yarn build:server"
+  },
+  "repository": "https://github.com/HackGT/projectideas-onboarding.git",
+  "author": "Rahul Rajan <rahul.rajan@hack.gt>",
+  "license": "MIT"
+}

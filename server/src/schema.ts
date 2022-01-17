@@ -1,14 +1,15 @@
+// In this file, you need to add an Idea schema at the end of the file
+// Follow the User schema as a template
+
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
 dotenv.config();
 
 const MONGO_URL = String(process.env.MONGO_URL);
-mongoose
-  .connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-  .catch((err) => {
-    throw err;
-  });
+mongoose.connect(MONGO_URL).catch((err) => {
+  throw err;
+});
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 interface RootDocument {
@@ -30,61 +31,34 @@ export interface IUser extends RootDocument {
 }
 export const User = mongoose.model<IUser & mongoose.Document>(
   "User",
-  new mongoose.Schema(
-    {
-      uuid: {
-        type: String,
-        required: true,
-        index: true,
-        unique: true,
-      },
-      email: {
-        type: String,
-        required: true,
-        unique: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      token: String,
-      admin: {
-        type: Boolean,
-        default: false,
-      },
-    },
-    {
-      usePushEach: true,
-    }
-  )
-);
-
-export interface IIdea extends RootDocument {
-  user: IUser;
-  title: string;
-  description: string;
-}
-
-const IdeaSchema = new mongoose.Schema(
-  {
-    user: {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
+  new mongoose.Schema({
+    uuid: {
+      type: String,
       required: true,
+      index: true,
+      unique: true,
     },
-    title: {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    name: {
       type: String,
       required: true,
     },
-    description: {
-      type: String,
-      required: true,
+    token: String,
+    admin: {
+      type: Boolean,
+      default: false,
     },
-  },
-  {
-    usePushEach: true,
-  }
+  })
 );
+
+//TODO: Fill out fields in interface for Idea database! Feel free to look at the IUser interface as a reference!
+export interface IIdea extends RootDocument {}
+//TODO: Fill out fields for schema for Idea Database. Feel free to look at the user schema as a reference!
+const IdeaSchema = new mongoose.Schema();
 
 IdeaSchema.virtual("id").get(function (this: any) {
   return this._id.toHexString();
