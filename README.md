@@ -104,6 +104,8 @@ If you're on Mac, you can get it started with brew services.
 
 ### Backend - Getting Started
 
+Before getting started, make sure to get the environment variables from your tech director and place them in a file called `.env` in the `/server` folder. Otherwise, you won't be able to run your code!
+
 In a different terminal window/tab, complete the following steps.
 
 1. `cd server` (Navigate to server folder)
