@@ -7,7 +7,7 @@
     "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/app.ts",
     "start": "ts-node src/app.ts"
   },
-  "repository": "https://github.com/HackGT/projectideas-onboarding2020.git",
+  "repository": "https://github.com/HackGT/projectideas-onboarding.git",
   "author": "mohandodda0 <mohandodda@rocketmail.com>",
   "license": "MIT",
   "devDependencies": {

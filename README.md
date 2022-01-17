@@ -1,8 +1,9 @@
-# 2021 HackGT Onboardnig
+# HackGT Tech Onboardnig
 
-Welcome to the HackGT 2021 onboarding project. This will serve as an introduction to TypeScript/JavaScript, Node.js, MongoDB, and React. You'll be making a Project Ideas dashboard!
+Welcome to the HackGT tech onboarding project. This will serve as an introduction to TypeScript/JavaScript, Node.js, MongoDB, and React. You'll be making a Project Ideas dashboard!
 
 This README has the following sections:
+
 - [Installation](#Installation)
 - [Learning Links](#Learning-Links)
 - [Setup](#Setup)
@@ -22,8 +23,9 @@ If you're on macOS or Linux, you should first install Homebrew. It's essentially
 You can download Node.js [here](https://nodejs.org/en/). Select the button saying "Recommended For Most Users".
 
 npm stands for Node Package Manager, though it's name is confusing since it can also be used on the frontend. npm is automatically distributed with Node.js.
- 
+
 To check that you have Node and npm installed, run these commands in your terminal.
+
 - `node -v`
 - `npm -v`
 
@@ -54,21 +56,25 @@ Postman is an app that allows you to test your backend code by sending different
 On most coding projects, you'll likely be using a wide number of tools, frameworks, and languages, and you'll constantly be learning new ones as projects rise and fall in popularity. As such, here are some cool resources to help you learn the tools we use at HackGT.
 
 ### JavaScript and TypeScript
+
 - Modern JavaScript Tutorial [https://javascript.info/](https://javascript.info/)
 - JavaScript tutorial [https://www.tutorialrepublic.com/javascript-tutorial/](https://www.tutorialrepublic.com/javascript-tutorial/)
 - TypeScript for new programmers [https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
 
 ### React
+
 - Amazing slides made my Tim Aveni, HackGT alum [https://tja.io/hackgt5/slides/](https://tja.io/hackgt5/slides/)
 - A great getting started guide with React [https://www.taniarascia.com/getting-started-with-react/](https://www.taniarascia.com/getting-started-with-react/)
 - Honestly, the official React docs are great themselves [https://reactjs.org/docs/hello-world.html](https://reactjs.org/docs/hello-world.html)
 
 ### Node.js and Express.js
+
 - Node.js/Express overview [https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
 - In depth Node.js [https://nodejs.dev/learn](https://nodejs.dev/learn)
 - Official Express getting started [https://expressjs.com/en/starter/hello-world.html](https://expressjs.com/en/starter/hello-world.html)
 
 ### MongoDB and Mongoose
+
 - MongoDB tutorial [https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/](https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/)
 - Mongoose introduction [https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/](https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/)
 
@@ -87,6 +93,7 @@ The code for this project is split up between the `client` and `server` folders 
 **Important** In total, you will need 3 different terminal windows/tabs to run all the code. One to run the MongoDB database, one to run the backend, and one to run the frontend.
 
 ### Backend - Getting Started
+
 1. In the terminal window, type `mongo` to start the MongoDB database. This creates a local database instance on your computer.
 
 In a different terminal window/tab, complete the following steps.
