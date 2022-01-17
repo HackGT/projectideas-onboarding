@@ -92,9 +92,17 @@ The code for this project is split up between the `client` and `server` folders 
 
 **Important** In total, you will need 3 different terminal windows/tabs to run all the code. One to run the MongoDB database, one to run the backend, and one to run the frontend.
 
-### Backend - Getting Started
+### Database - Getting Started
+
+If you're on Windows, follow this step to start your MongoDB server.
 
 1. In the terminal window, type `mongo` to start the MongoDB database. This creates a local database instance on your computer.
+
+If you're on Mac, you can get it started with brew services.
+
+1. Visit the docs [here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#installing-mongodb-5.0-edition-edition)
+
+### Backend - Getting Started
 
 In a different terminal window/tab, complete the following steps.
 
