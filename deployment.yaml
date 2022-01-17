@@ -7,11 +7,10 @@ wants:
   mongo: true
 
 secrets:
-  - GROUND_TRUTH_SECRET
-  - GROUND_TRUTH_ID
+  - GROUND_TRUTH_CLIENT_SECRET
+  - GROUND_TRUTH_CLIENT_ID
   - SECRET
 
 env:
-  GROUND_TRUTH_URL: https://login.hack.gt
+  GROUND_TRUTH_URL: https://login.dev.hack.gt
   PORT: 3000
-  

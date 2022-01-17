@@ -113,7 +113,7 @@ passport.serializeUser<string>((user, done) => {
   done(null, user.uuid);
 });
 passport.deserializeUser<string>((id, done) => {
-  User.findOne({ uuid: id }, (err, user) => {
+  User.findOne({ uuid: id }, (err: any, user: any) => {
     done(err, user!);
   });
 });

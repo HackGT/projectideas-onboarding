@@ -11,6 +11,7 @@
   "author": "mohandodda0 <mohandodda@rocketmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@hex-labs/tsconfig": "^1.1.13",
     "@types/compression": "1.7.2",
     "@types/cors": "2.8.12",
     "@types/dotenv": "8.2.0",
@@ -33,7 +34,6 @@
     "express-session": "1.17.2",
     "mongoose": "6.1.7",
     "morgan": "1.10.0",
-    "node-fetch": "3.1.1",
     "passport": "0.5.2",
     "passport-ground-truth": "^1.0.3",
     "passport-oauth2": "1.6.1",
