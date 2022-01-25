@@ -1,16 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 
-// components
-import ProjectContainer from './components/ProjectContainer';
-
-import { Box } from '@chakra-ui/react';
+import ProjectContainer from "./components/ProjectContainer";
 
 const App: React.FC = () => {
   return (
-    <Box minH="100%">
+    <ChakraProvider>
       <ProjectContainer />
-    </Box>
+    </ChakraProvider>
   );
 };
 
