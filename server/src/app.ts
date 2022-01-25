@@ -30,6 +30,7 @@ import { authRoutes } from "./routes/auth";
 import { ideaRoutes } from "./routes/idea";
 
 // TODO: Add your other routes here!!
+app.use("/ideas", ideaRoutes);
 app.use("/auth", authRoutes);
 
 app.use(
