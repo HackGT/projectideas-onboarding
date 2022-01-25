@@ -23,7 +23,21 @@ export let ideaRoutes = express.Router();
 //The title and description will be sent as a json within a post request.
 //title can be access with req.body.title and description as req.body.description
 ideaRoutes.route("/add").post(async (req, res, next) => {
+  //time to mongooose
+  const new_title = req.body.title;
+  const new_description = req.body.description;
+
+  const new_idea = new Idea({
+    title: new_title,
+    description: new_description
   });
+
+  new_idea.save();
+
+  return res.status(200);
+  //the most unsafe implementation of this. please use try catch to make sure no errors slip through.
+
+});
 
 //For this route we want to do remove an idea. 
 //We get the id of the idea to remove from the route header and remove it from the database!
