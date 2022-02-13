@@ -3,7 +3,6 @@
 
 import express from "express";
 import { createNew, IUser, User, IIdea, Idea } from "../schema";
-import mongoose from "mongoose";
 
 export let ideaRoutes = express.Router();
 //This below is a router. In the other file you will define this router and have it handle a route.
@@ -16,23 +15,59 @@ export let ideaRoutes = express.Router();
 //In each of the routes, we want the user to be logged in.
 //If so that info is stored in req.user which you can use within these routes!
 
+//For this route we want to display all of our ideas total!
+ideaRoutes.route("/").get(async (req, res, next) => {
+    const user = req.user as IUser;
+
+    // await b/c database calls
+    const ideas = await Idea.find({
+        user: user
+    });
+    
+    return res.send(ideas);
+})
+
 //For this route we want to do add an idea.
 //We get the idea from our front end and add it to our mongodb database
 //The title and description will be sent as a json within a post request.
 //title can be access with req.body.title and description as req.body.description
-ideaRoutes.route("/add").post(async (req, res, next) => {});
+ideaRoutes.route("/add").post(async (req, res, next) => {
+if (!req.body.title || !req.body.description) {
+    return res.status(400).send({ error: "Please fill in all required fields!"});
+}
+
+    let idea = createNew<IIdea>(Idea, {
+        user: req.user as IUser,
+        title: req.body.title,
+        description: req.body.description,
+    });
+
+    await idea.save();
+    return res.send({id: idea._id })
+});
 
 //For this route we want to do remove an idea.
 //We get the id of the idea to remove from the route header and remove it from the database!
 //There is no data sent within this post request so technically a get request could work too
-ideaRoutes.route("/remove/:id").post(async (req, res, next) => {});
+ideaRoutes.route("/remove/:id").post(async (req, res, next) => {
+    /* Since Idea is a Mongoose model, to process the delete of an idea
+    all we have to do is call the deleteOne() method 
+    */
+    const id = req.params.id;
+
+    await Idea.deleteOne({ _id: id });
+    
+    return res.send({ error: false });
+});
 
 //For this route we want to do edit an idea.
 //We get the id of the idea to edit from the route header.
 //The new title and new description will be sent as a json within a post request.
 //title can be access with req.body.title and description as req.body.description
 //Now we edit the existing idea in our database with the new data provides to us.
-ideaRoutes.route("/edit/:id").post(async (req, res, next) => {});
+ideaRoutes.route("/edit/:id").post(async (req, res, next) => {
 
-//For this route we want to display all of our ideas total!
-ideaRoutes.route("/").get(async (req, res, next) => {});
+    const resp = await Idea.findByIdAndUpdate( { _id: req.params.id }, { title: req.body.title, description: req.body.description });
+
+    return res.send(resp);
+});
