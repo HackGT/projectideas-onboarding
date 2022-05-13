@@ -12,6 +12,10 @@ Please follow the installation instructions in order, since later tools may depe
 
 ## Installation
 
+### Xcode Command-Line Tools
+
+If you're on macOS, you will need to install Xcode Command-Line tools first. This is a setup of basic development tools and utilities you'll need first. Be warned that it can take a while to install. You can install it by running `xcode-select --install`.
+
 ### Homebrew
 
 If you're on macOS or Linux, you should first install Homebrew. It's essentially a package manager for your computer (you'll need it to install tools like MongoDB).
