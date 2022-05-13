@@ -33,10 +33,8 @@ A Container component, sometimes called a "Smart Component" or a _Stateful Compo
 When the user refreshes the webpage, the following sequence will happen:
 
 - ProjectContainer Fetches Ideas from API
-- ProjectContainer stores the fetched ideas in _state_
-- ProjectContainer will pass this data into the ProjectGrid component via _props_
-- ProjectGrid will read its props and render ProjectCards for each "project idea"
-- Each ProjectCard will receive a project idea from ProjectGrid in its props & render the corresponding title & description
+- ProjectContainer will render ProjectCards for each "project idea"
+- Each ProjectCard will receive a project idea from ProjectContainer in its props & render the corresponding title & description
 
 ### Props
 
@@ -60,9 +58,7 @@ The fundamental concept to understand about state is that changing it triggers r
 The most powerful part of state is the ability to pass them in as props into child components. Here's a snippet of this in React syntax. We'll call this component ProjectContainer:
 
 ```html
-ProjectContainer.tsx 
-[titleState, setTitle] = useState(""); 
-...
+ProjectContainer.tsx [titleState, setTitle] = useState(""); ...
 <ProjectCard title="{titleState}" />
 ```
 
