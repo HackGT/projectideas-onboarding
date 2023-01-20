@@ -1,5 +1,6 @@
 import { Flex, Heading, Button, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
+import ProjectCard from "./ProjectCard"
 
 const ProjectContainer: React.FC = () => {
   // TODO: Add data fetching
@@ -24,8 +25,9 @@ const ProjectContainer: React.FC = () => {
         <Button color="tomato">Add Idea</Button>
       </Flex>
 
-      <SimpleGrid columns={[2, 3, 5]} spacing={6} padding={10}>
-        {/* Add ProjectCard ideas here */}
+      <SimpleGrid columns={[2, 3, 5]} spacing={40} padding={10}>
+        <ProjectCard title = "My great first idea" description = "This is a great idea"></ProjectCard>
+        <ProjectCard title = "Second idea" description = "My second idea"></ProjectCard>
       </SimpleGrid>
 
       {/* Add modal here */}

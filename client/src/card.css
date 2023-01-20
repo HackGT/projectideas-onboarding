@@ -1,0 +1,12 @@
+.card {
+    background-color: tomato;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    color: white;
+}
+
+.card--button {
+    color: tomato;
+    margin-top: 50px;
+}
