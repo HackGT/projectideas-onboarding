@@ -13,7 +13,7 @@ import React from "react";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
 import axios from "axios";
 import { AxiosRefetch, ProjectIdea } from "../types";
-import EditIdeaModal from "./EditIdeaModal";
+import { EditIdeaModal } from "./EditIdeaModal";
 import "../card.css";
 
 type Props = {

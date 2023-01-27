@@ -18,7 +18,7 @@ import { AxiosRefetch } from "../types";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-type Props = {
+type ModalProps = {
     isOpen: boolean;
     onClose: () => void;
     refetch: AxiosRefetch;
@@ -27,7 +27,7 @@ type Props = {
     description: string;
 };
 
-const EditIdeaModal: React.FC<Props> = (props: Props) => {
+const EditIdeaModal: React.FC<ModalProps> = (props: ModalProps) => {
     const {
         handleSubmit,
         register,
@@ -69,11 +69,11 @@ const EditIdeaModal: React.FC<Props> = (props: Props) => {
             <ModalOverlay />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ModalContent>
-                    <ModalHeader>Edit Project Idea</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
+                    <ModalHeader color="tomato">Edit Project Idea</ModalHeader>
+                    <ModalCloseButton color="tomato" />
+                    <ModalBody pb={6}>
                         <FormControl isInvalid={errors.title}>
-                            <FormLabel>Title</FormLabel>
+                            <FormLabel color="tomato">Title</FormLabel>
                             <Input 
                                 id="title"
                                 placeholder="Old idea"
@@ -88,7 +88,7 @@ const EditIdeaModal: React.FC<Props> = (props: Props) => {
                         </FormControl>
 
                         <FormControl isInvalid={errors.description}>
-                            <FormLabel>Description</FormLabel>
+                            <FormLabel color="tomato">Description</FormLabel>
                             <Input 
                                 id="description"
                                 placeholder="Old idea description"
@@ -107,9 +107,12 @@ const EditIdeaModal: React.FC<Props> = (props: Props) => {
                         <Button
                             color="tomato"
                             borderColor="tomato"
+                            mr={3}
                             type="submit"
                             isLoading={isSubmitting}
-                        > Save </Button>
+                        > 
+                            Save 
+                        </Button>
                     </ModalFooter>
                 </ModalContent>
             </form>
@@ -117,4 +120,4 @@ const EditIdeaModal: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default EditIdeaModal;
+export { EditIdeaModal };

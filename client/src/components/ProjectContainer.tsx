@@ -1,35 +1,26 @@
-import { Flex, Heading, Button, SimpleGrid } from "@chakra-ui/react";
+import { Flex, Heading, Button, SimpleGrid, useDisclosure } from "@chakra-ui/react";
 import React from "react";
-import ProjectCard from "./ProjectCard"
+import useAxios from "axios-hooks";
+import ProjectCard from "./ProjectCard";
+import { AddIdeaModal } from "./AddIdeaModal";
 
 const ProjectContainer: React.FC = () => {
+  const[{ data, loading, error }, refetch] = useAxios("/ideas");
   // TODO: Add data fetching
 
   // TODO: Add modal handling with useDisclosure
 
   // TODO: handle loading and error states
-  const[cards, setCards] = React.useState([{title: "Idea 1", description: "My first idea"},{title: "Idea 2", description: "My second idea"}])
 
-  const cardsDisplay = cards.map(card => {
-    return (
-      <ProjectCard title={card.title} description={card.description}></ProjectCard>
-    )
-  })
+  const {
+    isOpen: isAddIdeaOpen,
+    onOpen: onOpenAddIdea,
+    onClose: onCloseAddIdea
+  } = useDisclosure();
 
-  /*function deleteCard(id: string) {
-    setCards(prevCards => {
-      const newCards = prevCards
-        
-      return newCards
-    })
+  if (loading || error) {
+    return <h1>Loading...</h1>;
   }
-
-  function addCard() {
-    setCards(prevCards => {
-      const newCards = prevCards
-      return newCards
-    })
-  }*/
 
   return (
     <>
@@ -44,14 +35,20 @@ const ProjectContainer: React.FC = () => {
         height="100%"
       >
         <Heading as="h1">Project Ideas</Heading>
-        <Button color="tomato">Add Idea</Button>
+        <Button color="tomato" onClick={onOpenAddIdea}>Add Idea</Button>
       </Flex>
 
-      <SimpleGrid columns={[2, 3, 5]} spacing={40} padding={10}>
-        {cardsDisplay}
+      <SimpleGrid columns={[2, 3, 5]} spacing={6} padding={10}>
+        {data.map((idea: any) => (
+          <ProjectCard idea={idea} refetch={refetch} />
+        ))}
       </SimpleGrid>
 
-      {/* Add modal here */}
+      <AddIdeaModal 
+        isOpen={isAddIdeaOpen}
+        onClose={onCloseAddIdea}
+        refetch={refetch}
+      />
     </>
   );
 };
