@@ -22,12 +22,12 @@ export let ideaRoutes = express.Router();
 //title can be access with req.body.title and description as req.body.description
 ideaRoutes.route("/add").post(async (req, res, next) => {
     //We create a new idea with the title and description provided to us.
-    if (!(req.body.title) || !(req.body.description)) {
+    if (!req.body.title || !req.body.description) {
         next("Fill in all required fields.");
         return;
     }
 
-    let idea = createNew<IIdea>(Idea, {
+    const idea = createNew<IIdea>(Idea, {
         user: req.user as IUser,
         title: req.body.title,
         description: req.body.description
@@ -53,7 +53,7 @@ ideaRoutes.route("/remove/:id").post(async (req, res, next) => {
 //title can be access with req.body.title and description as req.body.description
 //Now we edit the existing idea in our database with the new data provides to us.
 ideaRoutes.route("/edit/:id").post(async (req, res, next) => {
-    if (!(req.body.title) || !(req.body.description)) {
+    if (!req.body.title || !req.body.description) {
         next("Fill in all required fields.");
         return;
     }
@@ -65,7 +65,7 @@ ideaRoutes.route("/edit/:id").post(async (req, res, next) => {
         idea.description = req.body.description;
 
         await idea.save();
-        res.send({ error: false});
+        res.send({ error: false });
     } else {
         next("Error, idea not found.");
         return;
