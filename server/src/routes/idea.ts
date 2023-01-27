@@ -20,7 +20,13 @@ export let ideaRoutes = express.Router();
 //We get the idea from our front end and add it to our mongodb database
 //The title and description will be sent as a json within a post request.
 //title can be access with req.body.title and description as req.body.description
-ideaRoutes.route("/add").post(async (req, res, next) => {});
+ideaRoutes.route("/add").post(async (req, res, next) => {
+    let idea = createNew<IIdea>(Idea, {
+        user: req.user as IUser,
+        title: req.body.title,
+        description: req.body.description
+    });
+});
 
 //For this route we want to do remove an idea.
 //We get the id of the idea to remove from the route header and remove it from the database!
