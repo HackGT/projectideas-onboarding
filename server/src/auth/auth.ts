@@ -67,7 +67,6 @@ export function isAdmin(
 
   const auth = request.headers.authorization;
   const user = request.user as IUser | undefined;
-
   if (process.env.PRODUCTION !== "true" || user?.admin) {
     next();
   } else if (auth && typeof auth === "string" && auth.includes(" ")) {
@@ -93,7 +92,7 @@ passport.use(
     },
     async (req, accessToken, refreshToken, profile, done) => {
       let user = await User.findOne({ uuid: profile.uuid });
-
+      
       if (!user) {
         user = createNew<IUser>(User, {
           ...profile,
