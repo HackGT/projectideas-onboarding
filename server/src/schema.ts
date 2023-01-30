@@ -14,6 +14,7 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 interface RootDocument {
   _id: mongoose.Types.ObjectId;
 }
+
 export function createNew<T extends RootDocument>(
   model: mongoose.Model<T & mongoose.Document, {}>,
   doc: Omit<T, "_id">
@@ -90,3 +91,35 @@ export const Idea = mongoose.model<IIdea & mongoose.Document>(
   "Idea",
   IdeaSchema
 );
+
+
+export interface IIdea2 extends RootDocument {
+  title: string;
+  description: string;
+}
+
+//TODO: Fill out fields for schema for Idea Database. Feel free to look at the user schema as a reference!
+const IdeaSchema2 = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
+
+IdeaSchema2.virtual("id").get(function (this: any) {
+  return this._id.toHexString();
+});
+
+IdeaSchema2.set("toJSON", {
+  virtuals: true,
+});
+
+export const Idea2 = mongoose.model<IIdea2 & mongoose.Document>(
+  "Idea2",
+  IdeaSchema2
+);
+

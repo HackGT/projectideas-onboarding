@@ -33,6 +33,7 @@ import { ideaRoutes } from "./routes/idea";
 app.use("/ideas", ideaRoutes);
 app.use("/auth", authRoutes);
 
+
 app.use(
   isAuthenticated,
   express.static(path.join(__dirname, "../../client/build"))
