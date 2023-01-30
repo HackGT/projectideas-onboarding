@@ -29,25 +29,24 @@ authRoutes.route("/check").get((req, res) => {
   }
 });
 
-/*
- authRoutes.route("/logout").all(async (req, res) => {
-   if (req.user) {
-     try {
-       await fetch(
-         new URL("/api/user/logout", process.env.GROUND_TRUTH_URL).toString(),
-         {
-           method: "POST",
-           headers: {
-             Authorization: `Bearer ${req.user.token}`,
-           },
-         }
-       );
-     } catch (err) {
-       console.error(err);
-     } finally {
-       req.logout();
-    }
-   }
+// authRoutes.route("/logout").all(async (req, res) => {
+//   if (req.user) {
+//     try {
+//       await fetch(
+//         new URL("/api/user/logout", process.env.GROUND_TRUTH_URL).toString(),
+//         {
+//           method: "POST",
+//           headers: {
+//             Authorization: `Bearer ${req.user.token}`,
+//           },
+//         }
+//       );
+//     } catch (err) {
+//       console.error(err);
+//     } finally {
+//       req.logout();
+//     }
+//   }
 
-   res.redirect("/auth/login");
- }); */
+//   res.redirect("/auth/login");
+// });

@@ -4,17 +4,22 @@ import { createNew, IUser, IIdea, Idea } from "../schema";
 export let ideaRoutes = express.Router();
 
 ideaRoutes.route("/add").post(async (req, res, next) => {
-  console.log('req: ', req.user)
   if (!req.body.title || !req.body.description) {
-    next("Please fill in both the title and description of the new note!");
+    next("Please fill in all required fields!");
     return;
   }
+
   let idea = createNew<IIdea>(Idea, {
     user: req.user as IUser,
     title: req.body.title,
     description: req.body.description,
   });
-
+  /*
+    This above is how to add document into collection with mongoose refer to https://mongoosejs.com/docs/models.html constructing documents
+    createNew function does this: const idea = new User({user_id: reqUser._id,title: data.title,description: data.description}
+    Idea is a model is imported from schema.ts 
+    _id field is also added as well. Here a unique id is assigned to the document.
+    */
   await idea.save();
 
   return res.send({ id: idea._id }); // we are sending id created from mongoose to the client side
