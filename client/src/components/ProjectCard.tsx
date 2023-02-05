@@ -1,10 +1,7 @@
 import { 
     Heading, 
-    Button, 
-    Text, 
-    Box, 
-    Flex, 
-    HStack, 
+    Text,
+    Flex,
     IconButton, 
     useDisclosure, 
     useToast 
@@ -57,20 +54,22 @@ const ProjectCard: React.FC<Props> = (props: Props) => {
 
     return(
         <div className = "card">
-            <Heading className = "card--heading">{props.idea.title}</Heading>
-            <Text className = "card--text">{props.idea.description}</Text>
-            <IconButton 
+            <Flex>
+                <Heading className = "card--heading">{props.idea.title}</Heading>
+                <IconButton 
                 aria-label="Delete idea"
                 icon={<DeleteIcon />}
                 size="sm"
                 onClick={onRemoveClick}
-            />
-            <IconButton 
+                />
+                <IconButton 
                 aria-label="Edit idea"
                 icon={<EditIcon />}
                 size="sm"
                 onClick={onOpenEditIdea}
-            />
+                />
+            </Flex>
+            <Text className = "card--text">{props.idea.description}</Text>
             <EditIdeaModal 
                 isOpen={isEditIdeaOpen}
                 onClose={onCloseEditIdea}
